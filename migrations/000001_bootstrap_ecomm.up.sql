@@ -2,7 +2,7 @@
      id BIGINT AUTO_INCREMENT PRIMARY KEY,
      email VARCHAR(255) NOT NULL UNIQUE,
      password_hash VARCHAR(255) NOT NULL,
-     name VARCHAR(255),
+     name VARCHAR(255) NOT NULL DEFAULT '',
      role VARCHAR(50) NOT NULL DEFAULT 'customer',
      created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
      updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
@@ -11,7 +11,7 @@
    CREATE TABLE products (
      id BIGINT AUTO_INCREMENT PRIMARY KEY,
      name VARCHAR(255) NOT NULL,
-     description TEXT,
+     description TEXT NOT NULL,
      price_cents INT NOT NULL,
      stock_quantity INT NOT NULL DEFAULT 0,
      status VARCHAR(50) NOT NULL DEFAULT 'active',
@@ -54,7 +54,7 @@
      order_id BIGINT NOT NULL,
      status VARCHAR(50) NOT NULL DEFAULT 'pending',
      amount_cents INT NOT NULL,
-     provider VARCHAR(100),
+     provider VARCHAR(100) NOT NULL DEFAULT '',
      created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
      CONSTRAINT fk_payments_order
